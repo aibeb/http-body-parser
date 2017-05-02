@@ -1,0 +1,39 @@
+{
+  "name": "http-body-parser",
+  "version": "1.1.0",
+  "description": "node,http,koa,koa2,express,express4,async,await,promise,json,text,stream,form,query,file,upload,body,parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eqfox/http-body-parser.git"
+  },
+  "keywords": [
+    "node",
+    "http",
+    "koa",
+    "koa2",
+    "express",
+    "express4",
+    "async",
+    "await",
+    "promise",
+    "json",
+    "text",
+    "stream",
+    "form",
+    "query",
+    "file",
+    "upload",
+    "body",
+    "parser"
+  ],
+  "author": "sunwei <sunwei@eqfox.com> (http://www.eqfox.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eqfox/http-body-parser/issues"
+  },
+  "homepage": "https://github.com/eqfox/http-body-parser#readme"
+}
