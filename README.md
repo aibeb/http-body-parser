@@ -10,12 +10,12 @@ http-body-parser
 
 [npm-image]: https://img.shields.io/npm/v/http-body-parser.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/http-body-parser
-[travis-image]: https://img.shields.io/travis/eqfox/bodyparser.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eqfox/bodyparser
-[coveralls-image]: https://img.shields.io/coveralls/eqfox/bodyparser.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/eqfox/bodyparser?branch=master
-[david-image]: https://img.shields.io/david/eqfox/bodyparser.svg?style=flat-square
-[david-url]: https://david-dm.org/eqfox/bodyparser
+[travis-image]: https://img.shields.io/travis/eqfox/http-body-parser.svg?style=flat-square
+[travis-url]: https://travis-ci.org/eqfox/http-body-parser
+[coveralls-image]: https://img.shields.io/coveralls/eqfox/http-body-parser.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/eqfox/http-body-parser?branch=master
+[david-image]: https://img.shields.io/david/eqfox/http-body-parser.svg?style=flat-square
+[david-url]: https://david-dm.org/eqfox/http-body-parser
 [node-image]: https://img.shields.io/badge/node.js-%3E=_7.6-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 [gittip-image]: https://img.shields.io/gittip/dead-horse.svg?style=flat-square
