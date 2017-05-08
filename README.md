@@ -30,14 +30,13 @@ A body parser for koa, express. support `json`, `form`, `text`, `multipart` and 
 
 ## Usage
 
+### Koa
 ```js
 const Koa = require('koa');
-const bodyParser = require('http-body-parser');
+const bodyParser = require('http-body-parser').koa;
 
 const app = new Koa();
-app.use(bodyParser({
-
-}));
+app.use(bodyParser({}));
 
 app.use(async ctx => {
   // the parsed body will store in ctx.request.body
@@ -45,6 +44,24 @@ app.use(async ctx => {
   ctx.body = ctx.request.body;
 });
 ```
+
+### Express
+```js
+const express = require('express');
+const bodyParser = require('http-body-parser').express;
+
+const app = express();
+app.use(bodyParser({}));
+
+server.use('/', function(req, res) {
+  res.send(req.body)
+})
+```
+
+## Features
+* Based on the ES6 syntax, the code is concise
+* No third party module dependent
+$ Support Koa and Express
 
 ## Options
 
@@ -66,18 +83,21 @@ app.use(async ctx => {
       extendsTypes: []
     },
     stream: {
-      limit: 1024*1024
+      limit: 1024*1024,
+      path: `the operating system's default directory`
     },
     multipart: {
-      limit: 1024*1024
+      limit: 1024*1024,
+      path: `the operating system's default directory`
     }
 }
 ```
 * **enableTypes**: parser will only parse when request type hits enableTypes, default is `['json', 'form', 'text', 'multipart', 'stream']`.
 * **encode**: requested encoding. Default is `utf-8`.
-* **limit**: limit of the body. If the body ends up being larger than this limit, a 413 error code is returned. Default is `56kb`.
+* **limit**: limit of the body. If the body ends up being larger than this limit, a 413 error code is returned.
 * **strict**: when set to true, JSON parser will only accept arrays and objects. Default is `true`.
-* **extendTypes**: support extend types, eg:  `['application/x-javascript']`
+* **extendTypes**: support extend types, eg:  `application/x-javascript`
+* **path**: which folder the uploaded files should be stored, active on `multipart, stream`
 
 ## Raw Body
 

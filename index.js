@@ -39,16 +39,14 @@ class ParserFactory {
       Parser]of Object.entries(this.parsers)) {
       if (this.enableTypes.includes(name)) {
         if (typeIs(this.req, Parser.getTypes(Parser.options.extendsTypes))) {
-          return new Parser(body, this.req.headers);
+          return new Parser(body, this.req.headers, Parser.options.limit, Parser.options.path);
         }
       }
     }
   }
 }
 
-// Middleware
-// options = {enableTypes:['json', 'form'], json: {}, text: {}}
-module.exports = (options = {}) => {
+module.exports.koa = (options = {}) => {
   return async(ctx, next) => {
     // new parserFactory
     let parserFactory = new ParserFactory(ctx.req, options.enableTypes);
@@ -65,6 +63,28 @@ module.exports = (options = {}) => {
     if (parser) {
       ctx.request.rawBody = body;
       ctx.request.body = parser.parse();
+    }
+    await next();
+  };
+}
+
+module.exports.express = (options = {}) => {
+  return async(req, res, next) => {
+    // new parserFactory
+    let parserFactory = new ParserFactory(req, options.enableTypes);
+    // add parser to factory
+    parserFactory.addParser('json', JsonParser, options.json);
+    parserFactory.addParser('form', FormParser, options.form);
+    parserFactory.addParser('text', TextParser, options.text);
+    parserFactory.addParser('multipart', MultipartParser, options.multipart);
+    parserFactory.addParser('stream', StreamParser, options.stream);
+    // get request body
+    let body = await parserFactory.getBody();
+    // parse body
+    let parser = parserFactory.getEnableParser(body);
+    if (parser) {
+      req.rawBody = body;
+      req.body = parser.parse();
     }
     await next();
   };

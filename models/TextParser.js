@@ -1,5 +1,5 @@
 class TextParser {
-  constructor(body, headers, limit) {
+  constructor(body, headers, limit = 1024 * 1024) {
     this.body = body;
     this.headers = headers;
     this.limit = limit;

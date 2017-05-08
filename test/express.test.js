@@ -1,17 +1,14 @@
-const Koa = require('koa');
+const express = require('express')
 const test = require('ava');
 const fs = require('fs');
 const path = require('path');
 const request = require('supertest');
-const bodyParser = require('../').koa;
+const bodyParser = require('../').express;
 const image1 = path.join(__dirname, 'upload/image1.jpg');
 const image2 = path.join(__dirname, 'upload/image2.jpg');
 
-const app = new Koa();
-app.use(async(ctx, next) => {
-  await next()
-});
-app.use(bodyParser({
+const server = express();
+server.use(bodyParser({
   enableTypes: [
     'json', 'form', 'text', 'multipart', 'stream'
   ],
@@ -19,10 +16,9 @@ app.use(bodyParser({
     path: 'uploads/'
   }
 }))
-app.use(ctx => {
-  ctx.body = ctx.request.body
-});
-let server = app.listen();
+server.use('/', function(req, res) {
+  res.send(req.body)
+})
 
 test('JSON', async t => {
   t.plan(2);
@@ -42,7 +38,7 @@ test('Text', async t => {
   t.plan(2);
   const res = await request(server).post('/').set('Content-Type', 'text/plain').send('eqfox');
   t.is(res.status, 200);
-  t.is(res.text, 'eqfox');
+  t.deepEqual(res.text, 'eqfox');
 });
 
 test('Multipart', async t => {

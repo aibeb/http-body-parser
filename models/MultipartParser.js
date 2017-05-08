@@ -3,12 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const uuid = require('uuid');
+const os = require('os');
 
 class MultipartParser {
-  constructor(body, headers, limit = 1024 * 1024) {
+  constructor(body, headers, limit = 1024 * 1024, path = os.tmpdir()) {
     this.body = body;
     this.headers = headers;
     this.limit = limit;
+    this.path = path;
     this.boundary = Buffer.from('--' + headers['content-type'].split(';').pop().replace('boundary=', '').trim());
   }
 
@@ -38,12 +40,12 @@ class MultipartParser {
         let value = this.body.slice(value_start, value_end);
         body[name_match[2]] = {
           name: filename_match[2],
-          path: path.join('uploads', filename_match[2]),
+          path: path.join(this.path, filename_match[2]),
           mimetype: null,
           size: value.length,
           sha256: crypto.createHash('sha256').update(value).digest("hex")
         };
-        fs.writeFileSync(path.join('uploads', filename_match[2]), value)
+        fs.writeFileSync(path.join(this.path, filename_match[2]), value)
       }
       begin = end;
     }

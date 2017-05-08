@@ -1,7 +1,7 @@
 {
   "name": "http-body-parser",
   "version": "1.1.0",
-  "description": "🎨 node,http,koa,koa2,express,express4,async,await,promise,json,text,stream,form,query,file,upload,body,parser",
+  "description": "🎨 A body parser for node, koa, koa2, express. support json, form, text, multipart and stream type body.",
   "main": "index.js",
   "scripts": {
     "test": "ava test/*.js"
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "express": "^4.15.2",
     "koa": "^2.2.0",
     "supertest": "^3.0.0"
   },
