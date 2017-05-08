@@ -26,7 +26,7 @@ A body parser for koa, express. support `json`, `form`, `text`, `multipart` and 
 
 ## Install
 
-[![NPM](https://nodei.co/npm/koa-bodyparser.png?downloads=true)](https://nodei.co/npm/koa-bodyparser/)
+[![NPM](https://nodei.co/npm/http-body-parser.png?downloads=true)](https://nodei.co/npm/http-body-parser/)
 
 ## Usage
 
