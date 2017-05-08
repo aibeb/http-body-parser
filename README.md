@@ -22,7 +22,7 @@ http-body-parser
 [gittip-url]: https://www.gittip.com/dead-horse/
 
 
-A body parser for koa, express. support `json`, `form`, `text`, `multipart` and `stream` type body.
+🔥 A body parser for koa, express. support `json`, `form`, `text`, `multipart` and `stream` type body.
 
 ## Install
 
