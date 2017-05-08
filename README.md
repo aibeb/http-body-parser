@@ -61,7 +61,7 @@ server.use('/', function(req, res) {
 ## Features
 * Based on the ES6 syntax, the code is concise
 * No third party module dependent
-$ Support Koa and Express
+* Support Koa and Express
 
 ## Options
 
