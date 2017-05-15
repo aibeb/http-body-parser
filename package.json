@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test": "ava test/*.js",
+    "test": "ava",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -54,5 +54,15 @@
   },
   "dependencies": {
     "uuid": "^3.0.1"
+  },
+  "ava": {
+    "files": [
+      "test/*.spec.js"
+    ],
+    "tap": false,
+    "babel": "inherit",
+    "require": [
+      "babel-register", "babel-polyfill"
+    ]
   }
 }

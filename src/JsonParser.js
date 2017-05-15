@@ -15,4 +15,4 @@ class JsonParser {
   }
 }
 
-module.exports = JsonParser;
+export default JsonParser;

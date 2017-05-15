@@ -15,4 +15,4 @@ class TextParser {
   }
 }
 
-module.exports = TextParser;
+export default TextParser;

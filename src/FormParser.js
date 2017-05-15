@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 
-module.exports = class FormParser {
+class FormParser {
   constructor(body, headers, limit = 56 * 1024) {
     this.body = body;
     this.headers = headers;
@@ -15,4 +15,6 @@ module.exports = class FormParser {
     const originTypes = new Array('application/x-www-form-urlencoded');
     return Array.from(new Set(originTypes.concat(extendsTypes)));
   }
-};
+}
+
+export default FormParser;

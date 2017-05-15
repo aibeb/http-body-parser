@@ -21,6 +21,10 @@ class StreamParser {
       size: this.body.length,
       sha256: crypto.createHash('sha256').update(this.body).digest('hex'),
     };
+    const dirname = Path.dirname(file.path);
+    if (!fs.existsSync(dirname)) {
+      fs.mkdirSync(dirname);
+    }
     fs.writeFileSync(file.path, this.body);
     return file;
   }
@@ -31,4 +35,4 @@ class StreamParser {
   }
 }
 
-module.exports = StreamParser;
+export default StreamParser;

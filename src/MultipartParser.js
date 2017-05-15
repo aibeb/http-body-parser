@@ -55,4 +55,4 @@ class MultipartParser {
   }
 }
 
-module.exports = MultipartParser;
+export default MultipartParser;
