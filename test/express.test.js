@@ -3,7 +3,7 @@ const test = require('ava');
 const fs = require('fs');
 const path = require('path');
 const request = require('supertest');
-const bodyParser = require('../').express;
+const bodyParser = require('../src').express;
 const image1 = path.join(__dirname, 'upload/image1.jpg');
 const image2 = path.join(__dirname, 'upload/image2.jpg');
 

@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const path = require('path');
+const Path = require('path');
 const crypto = require('crypto');
 const fs = require('fs');
 const os = require('os');
@@ -13,22 +13,22 @@ class StreamParser {
   }
 
   parse() {
-    let filename = uuid();
-    let file = {
+    const filename = uuid();
+    const file = {
       name: filename,
-      path: path.join(this.path, filename),
+      path: Path.join(this.path, filename),
       mimetype: null,
       size: this.body.length,
-      sha256: crypto.createHash('sha256').update(this.body).digest("hex")
+      sha256: crypto.createHash('sha256').update(this.body).digest('hex'),
     };
-    fs.writeFileSync(file.path, this.body)
-    return file
+    fs.writeFileSync(file.path, this.body);
+    return file;
   }
 
   static getTypes(extendsTypes = []) {
-    let originTypes = new Array('application/octet-stream');
-    return Array.from(new Set(originTypes.concat(extendsTypes)))
+    const originTypes = new Array('application/octet-stream');
+    return Array.from(new Set(originTypes.concat(extendsTypes)));
   }
 }
 
-module.exports = StreamParser
+module.exports = StreamParser;

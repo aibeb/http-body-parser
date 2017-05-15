@@ -10,9 +10,9 @@ class TextParser {
   }
 
   static getTypes(extendsTypes = []) {
-    let originTypes = new Array('text/plain');
-    return Array.from(new Set(originTypes.concat(extendsTypes)))
+    const originTypes = new Array('text/plain');
+    return Array.from(new Set(originTypes.concat(extendsTypes)));
   }
 }
 
-module.exports = TextParser
+module.exports = TextParser;

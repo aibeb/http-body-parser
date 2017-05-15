@@ -5,6 +5,7 @@
  * MIT Licensed
  */
 
+
 /**
  * Module dependencies.
  * @private
@@ -66,7 +67,9 @@ function typeis(value, types_) {
   let type;
   for (i = 0; i < types.length; i++) {
     if (mimeMatch(normalize(type = types[i]), val)) {
-      return type[0] === '+' || type.indexOf('*') !== -1 ? val : type;
+      return type[0] === '+' || type.indexOf('*') !== -1
+        ? val
+        : type;
     }
   }
 
@@ -171,7 +174,9 @@ function normalize(type) {
     return `*/*${type}`;
   }
 
-  return type.indexOf('/') === -1 ? mime.lookup(type) : type;
+  return type.indexOf('/') === -1
+    ? mime.lookup(type)
+    : type;
 }
 
 /**

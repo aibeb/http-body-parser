@@ -4,7 +4,9 @@
   "description": "🎨 A body parser for node, koa, koa2, express. support json, form, text, multipart and stream type body.",
   "main": "index.js",
   "scripts": {
-    "test": "ava test/*.js"
+    "build": "babel src -d lib",
+    "test": "ava test/*.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,11 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
     "express": "^4.15.2",
     "koa": "^2.2.0",
     "supertest": "^3.0.0"
