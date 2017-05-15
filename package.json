@@ -1,6 +1,6 @@
 {
   "name": "http-body-parser",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "🎨 A body parser for node, koa, koa2, express. support json, form, text, multipart and stream type body.",
   "main": "lib/index.js",
   "scripts": {
