@@ -3,7 +3,7 @@ const test = require('ava');
 const fs = require('fs');
 const path = require('path');
 const request = require('supertest');
-const bodyParser = require('../lib/').koa;
+const bodyParser = require('../lib').koa;
 const image1 = path.join(__dirname, 'image1.jpg');
 const image2 = path.join(__dirname, 'image2.jpg');
 

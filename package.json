@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test": "ava ava test/src.*.spec.js",
-    "test:build": "ava test/lib.*.spec.js",
-    "prepublish": "npm run build"
+    "pretest": "npm run build",
+    "test": "ava test/*.spec.js",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
