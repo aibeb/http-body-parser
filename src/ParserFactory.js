@@ -1,18 +1,17 @@
 import typeIs from './TypeIs';
 
 class ParserFactory {
-  constructor(req, enableTypes = [
-    'json', 'form', 'text', 'multipart', 'stream',
-  ], parsers = {}) {
+  constructor(req, enableTypes = ['json', 'form', 'text', 'multipart', 'stream'], parsers = []) {
     this.req = req;
     this.enableTypes = enableTypes;
     this.parsers = parsers;
   }
 
-  addParser(name, _Parser, options = {}) {
+  addParser(type, _Parser, options = {}) {
     const Parser = _Parser;
+    Parser.type = type;
     Parser.options = options;
-    this.parsers[name] = Parser;
+    this.parsers.push(Parser);
   }
 
   getBody() {
@@ -30,8 +29,8 @@ class ParserFactory {
 
   getEnableParser(body) {
     let parser = null;
-    Object.entries(this.parsers).forEach(([name, Parser]) => {
-      if (this.enableTypes.includes(name)) {
+    this.parsers.forEach((Parser) => {
+      if (this.enableTypes.includes(Parser.type)) {
         if (typeIs(this.req, Parser.getTypes(Parser.options.extendsTypes))) {
           parser = new Parser(body, this.req.headers, Parser.options.limit, Parser.options.path);
         }
