@@ -5,18 +5,32 @@ import MultipartParser from './MultipartParser';
 import StreamParser from './StreamParser';
 import ParserFactory from './ParserFactory';
 
-exports.koa = (options = {}) => async (ctx, next) => {
-    // new parserFactory
-  const parserFactory = new ParserFactory(ctx.req, options.enableTypes);
-    // add parser to factory
+
+const bodyParser = async (req, options) => {
+  // new parserFactory
+  const parserFactory = new ParserFactory(req, options.enableTypes);
+  // add parser to factory
   parserFactory.addParser('json', JsonParser, options.json);
   parserFactory.addParser('form', FormParser, options.form);
   parserFactory.addParser('text', TextParser, options.text);
   parserFactory.addParser('multipart', MultipartParser, options.multipart);
   parserFactory.addParser('stream', StreamParser, options.stream);
-    // get request body
+  // get request body
   const body = await parserFactory.getBody();
-    // parse body
+};
+
+exports.koa = (options = {}) => async (ctx, next) => {
+  // new parserFactory
+  const parserFactory = new ParserFactory(ctx.req, options.enableTypes);
+  // add parser to factory
+  parserFactory.addParser('json', JsonParser, options.json);
+  parserFactory.addParser('form', FormParser, options.form);
+  parserFactory.addParser('text', TextParser, options.text);
+  parserFactory.addParser('multipart', MultipartParser, options.multipart);
+  parserFactory.addParser('stream', StreamParser, options.stream);
+  // get request body
+  const body = await parserFactory.getBody();
+  // parse body
   const parser = parserFactory.getEnableParser(body);
   if (parser) {
     ctx.request.rawBody = body;
